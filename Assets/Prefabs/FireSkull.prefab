@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2890526878941454219}
   - component: {fileID: 8718465075759700182}
   - component: {fileID: 6368480135282491785}
+  - component: {fileID: -4264704158300280519}
   m_Layer: 6
   m_Name: FireSkull
   m_TagString: Untagged
@@ -135,8 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d3332a786d64bedb8085478737f65b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
-  meleeDmg: 2
+  _gm: {fileID: 0}
 --- !u!114 &8718465075759700182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,3 +195,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.48196983, y: 0.66328}
   m_EdgeRadius: 0
+--- !u!114 &-4264704158300280519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3417807105916154114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4324dda22c9d4cf986a5ab18e087101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 2
+  _target: {fileID: 0}
+  _minimumDist: 0.5
