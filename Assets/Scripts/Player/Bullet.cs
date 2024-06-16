@@ -9,12 +9,19 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<EnemyMovement>())
+        if (!collision.gameObject.GetComponent<playerMovement>())
         {
-            //GameObject effect = Instantiate(hitEft, transform.position, Quaternion.identity);
-            Destroy(collision.gameObject);
+            if (collision.gameObject.GetComponent<EnemyMovement>())
+            {
+                //GameObject effect = Instantiate(hitEft, transform.position, Quaternion.identity);
+                Destroy(collision.gameObject);
+                print(collision.gameObject);
+            }
             Destroy(gameObject);
-            print(collision.gameObject);
+        }
+        else
+        {
+
         }
         Debug.Log(collision.gameObject);
     }
