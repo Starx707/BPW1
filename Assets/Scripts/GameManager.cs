@@ -64,6 +64,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PlayerHeal()
+    {
+        Debug.Log("Player heals");
+        Debug.Log(playerHPTracker + " is current hp");
+        if (playerHPTracker == 1)
+        {
+            _hpSpriteUI.overrideSprite = _1HP;
+        }
+        else if (playerHPTracker == 2)
+        {
+            _hpSpriteUI.overrideSprite = _2HP;
+        }
+        else if (playerHPTracker == 3)
+        {
+            _hpSpriteUI.overrideSprite = _fullHP;
+        }
+    }
+
     public void EnemyDefeated()
     {
         _enemiesDefeated.text = enemyDeathCount.ToString();

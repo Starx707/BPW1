@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 2;
+    public int Health = 3;
 
     [SerializeField] private GameManager _gm;
 
@@ -12,8 +12,8 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<EnemyMovement>())
         {
-            maxHealth--;
-            _gm.playerHPTracker = maxHealth;
+            Health--;
+            _gm.playerHPTracker = Health;
             _gm.PlayerDamaged();
         }
     }
