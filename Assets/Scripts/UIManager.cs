@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class UIManager : MonoBehaviour
     //Start game ()
     public void StartGame()
     {
-
+        SceneManager.LoadSceneAsync("MainLevel"); //change to Tutorial version when done
     }
 
     //------ Pause game
@@ -33,11 +34,18 @@ public class UIManager : MonoBehaviour
     //------ Game over screen
     //Random comment ()
 
-    //Retry game ()
+    public void RetryGame()
+    {
+        SceneManager.LoadSceneAsync("MainLevel");
+    }
 
 
     //------ General
-    //Quit game ()
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Game quit"); //Remove later
+    }
 
 
     //------ Sfx

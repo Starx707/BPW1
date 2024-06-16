@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private int maxHealth = 2;
 
-    [SerializeField] private int maxHealth = 9;
-    //public int meleeDmg = 3; //how to 'connect' this variable to short range atk
+    [SerializeField] private GameManager _gm;
 
-    // Start is called before the first frame update
-    void Start()
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<EnemyMovement>())
+        {
+            maxHealth--;
+            _gm.playerHPTracker = maxHealth;
+            _gm.PlayerDamaged();
+        }
+    }
+
+        // Start is called before the first frame update
+        void Start()
     {
         
     }

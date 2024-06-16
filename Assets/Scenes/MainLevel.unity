@@ -646,9 +646,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 339dbf13d049942d6b8fcd21481b6b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHPTracker: 0
   enemiesDefeated: 0
   _GameUI: {fileID: 107291888}
   _pausePanel: {fileID: 411145502}
+  _fullHP: {fileID: 21300000, guid: 55c316c4e66dc4fd9814bf3680a96aa8, type: 3}
+  _2HP: {fileID: 21300000, guid: f3a643df7bfb340d89766fc2c8436b5e, type: 3}
+  _1HP: {fileID: 21300000, guid: b8f56baad549f4de9825b72a3eca2194, type: 3}
+  _0HP: {fileID: 21300000, guid: f46ea23da6921454087c4a09bae7e58a, type: 3}
+  _hpSpriteUI: {fileID: 1928145776}
   _enemiesDefeated: {fileID: 279906242}
   enemyDeathCount: 0
 --- !u!4 &82563246
@@ -86282,7 +86288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d94b5daa93c4874b8c51ddb82cd468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 3
+  _gm: {fileID: 82563245}
 --- !u!114 &1250422930
 MonoBehaviour:
   m_ObjectHideFlags: 0

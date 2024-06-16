@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     //Player data
+    public int playerHPTracker;
 
     //Enemy data
     public int enemiesDefeated;
@@ -15,6 +17,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _GameUI;
     [SerializeField] private GameObject _pausePanel;
     bool _gamePaused = false;
+
+    [SerializeField] private Sprite _fullHP;
+    [SerializeField] private Sprite _2HP;
+    [SerializeField] private Sprite _1HP;
+    [SerializeField] private Sprite _0HP;
+    [SerializeField] private Image _hpSpriteUI;
 
     [SerializeField] private TMP_Text _enemiesDefeated;
     public int enemyDeathCount;
@@ -35,12 +43,37 @@ public class GameManager : MonoBehaviour
     //------ Game
     //Treasure collected ()
 
+    public void PlayerDamaged()
+    {
+        Debug.Log(playerHPTracker + " hp left");
+        if (playerHPTracker == 2)
+        {
+            Debug.Log(playerHPTracker + " hp left");
+            _hpSpriteUI.overrideSprite = _2HP;
+        }
+        else if (playerHPTracker == 1)
+        {
+            _hpSpriteUI.overrideSprite = _1HP;
+        }
+        else if (playerHPTracker <= 0)
+        {
+            _hpSpriteUI.overrideSprite = _0HP;
+            GameOver();
+            Debug.Log("Player defeated");
+            //Call Gameover
+        }
+    }
 
     public void EnemyDefeated()
     {
         _enemiesDefeated.text = enemyDeathCount.ToString();
     }
 
+    private void GameOver()
+    {
+        //Call when player defeated
+        SceneManager.LoadSceneAsync("GameOver");
+    }
 
     //------ UI
     private void PauseGame()
