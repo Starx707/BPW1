@@ -11,10 +11,8 @@ GameObject:
   - component: {fileID: 8159783351774627692}
   - component: {fileID: 177052228624207229}
   - component: {fileID: 4759479528133667171}
-  - component: {fileID: 1716553879061261477}
   - component: {fileID: 2406036931226129397}
   - component: {fileID: 2890526878941454219}
-  - component: {fileID: -2406016356651442441}
   - component: {fileID: 8718465075759700182}
   - component: {fileID: 6368480135282491785}
   m_Layer: 6
@@ -79,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -943280823, guid: 7e86fa3677c5ce14f91e01997e159049, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -112,33 +110,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!50 &1716553879061261477
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3417807105916154114}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &2406036931226129397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,19 +137,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   meleeDmg: 2
---- !u!114 &-2406016356651442441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3417807105916154114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea26709a8ac1842ccb51d2129438ff10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awarenessDistance: 0
 --- !u!114 &8718465075759700182
 MonoBehaviour:
   m_ObjectHideFlags: 0

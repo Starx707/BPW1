@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     //Player data
 
     //Enemy data
+    public int enemiesDefeated;
 
     //UI data
     [SerializeField] private GameObject _GameUI;
     [SerializeField] private GameObject _pausePanel;
     bool _gamePaused = false;
+
+    [SerializeField] private TMP_Text _enemiesDefeated;
+    public int enemyDeathCount;
 
     //Game data (such as score)
 
@@ -31,7 +36,10 @@ public class GameManager : MonoBehaviour
     //Treasure collected ()
 
 
-    //Enemies defeated ()
+    public void EnemyDefeated()
+    {
+        _enemiesDefeated.text = enemyDeathCount.ToString();
+    }
 
 
     //------ UI
