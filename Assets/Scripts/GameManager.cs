@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     public int enemyDeathCount;
 
     //Game data (such as score)
-
+    public int collectedCoins;
 
     // Start is called before the first frame update
     void Start()

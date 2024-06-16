@@ -29,11 +29,9 @@ public class UIManager : MonoBehaviour
     }
 
     //------ Pause game
-    
+    //--later
 
     //------ Game over screen
-    //Random comment ()
-
     public void RetryGame()
     {
         SceneManager.LoadSceneAsync("MainLevel");
@@ -44,9 +42,12 @@ public class UIManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
-        Debug.Log("Game quit"); //Remove later
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadSceneAsync("MainMenu");
+    }
 
     //------ Sfx
     /*

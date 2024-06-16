@@ -168,6 +168,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 087a610db838d411db413cd4be72d635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gm: {fileID: 0}
+  coinsGoal: 4
+  killGoal: 6
+  _dialogNPC: {fileID: 0}
+  _colorDialogNPC: {r: 0, g: 0, b: 0, a: 0}
 --- !u!61 &9216397
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -747,6 +752,7 @@ MonoBehaviour:
   _hpSpriteUI: {fileID: 1928145776}
   _enemiesDefeated: {fileID: 279906242}
   enemyDeathCount: 0
+  collectedCoins: 0
 --- !u!4 &82563246
 Transform:
   m_ObjectHideFlags: 0
@@ -775,6 +781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coinCount: 0
+  _gm: {fileID: 82563245}
   _coinCountTxt: {fileID: 1936118990}
 --- !u!1 &102780969
 GameObject:
@@ -85995,7 +86002,7 @@ GameObject:
   - component: {fileID: 1250422930}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
