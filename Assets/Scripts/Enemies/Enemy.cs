@@ -28,38 +28,43 @@ public class Enemy : MonoBehaviour
         else
         {
             _seesPlayer = false;
-            if (transform.position != _patrolLoc[_currentIndex].position) //Never goes to else if ????
+            if (transform.position != _patrolLoc[_currentIndex].position) 
             {
-                Debug.Log("I is moving to location");
                 transform.position = Vector2.MoveTowards(transform.position, _patrolLoc[_currentIndex].position, _patrolSpeed * Time.deltaTime);
             }
-            else if (transform.position == _patrolLoc[_currentIndex].position)
+            else 
             {
-                Debug.Log("I has been on old loc");
+                Debug.Log(_once); //for some reason stays true and....
                 if (_once == false)
                 {
                     _once = true;
                     StartCoroutine(Wait());
+                    Debug.Log("Changing course");
                 }
-                StartCoroutine(Wait());
+                else
+                {
+                    Debug.Log("skipped");//...ends up skipping the remaining code
+                }
             }
         }
 
     }
 
-    IEnumerator Wait()
+    IEnumerator Wait() //...doesn't even get here
     {
         yield return new WaitForSeconds(_waitTime);
         if (_currentIndex + 1 < _patrolLoc.Length)
         {
             _currentIndex++;
-            Debug.Log("Ran through enumerator");
+            _once = false;
+            Debug.Log(_once + "row 60");
         }
-        else if (_currentIndex == _patrolLoc.Length)
+        else if (_currentIndex >= _patrolLoc.Length)
         {
+            Debug.Log(_currentIndex);
             _currentIndex = 0;
+            _once = false;
         }
-
         _once = false;
     }
 
