@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
         else
         {
             _seesPlayer = false;
-            if (transform.position != _patrolLoc[_currentIndex].position)
+            if (transform.position != _patrolLoc[_currentIndex].position) //Never goes to else if ????
             {
                 Debug.Log("I is moving to location");
                 transform.position = Vector2.MoveTowards(transform.position, _patrolLoc[_currentIndex].position, _patrolSpeed * Time.deltaTime);
