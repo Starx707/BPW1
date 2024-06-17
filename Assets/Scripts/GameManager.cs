@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public int enemiesDefeated;
 
     //UI data
+    public bool tutorialLvl = true;
     [SerializeField] private GameObject _GameUI;
     [SerializeField] private GameObject _pausePanel;
     bool _gamePaused = false;

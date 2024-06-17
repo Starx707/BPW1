@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public enum EnemyState
+    {
+        Patrolling,
+        Chasing,
+    }
+
+    [SerializeField] private EnemyState _state = EnemyState.Patrolling;
+
     //Chase player (at all times)
     [SerializeField] private float _chaseSpeed;
     [SerializeField] private float _patrolSpeed;
@@ -16,50 +24,61 @@ public class Enemy : MonoBehaviour
     bool _seesPlayer = false;
     bool _once = false;
 
+
     private void Update()
     {
         _distance = Vector2.Distance(transform.position, _target.transform.position); //calculates distance between itself and player
 
-        if (_distance < 3.5) //chases the player from a certain distance
+        // if (_distance < 0.25) { _state = EnemyState.Attacking }
+        if (_distance < 3.5)
         {
-            _seesPlayer = true;
-            transform.position = Vector2.MoveTowards(transform.position, _target.transform.position, _chaseSpeed * Time.deltaTime);
+            _state = EnemyState.Chasing;
         }
         else
         {
-            _seesPlayer = false;
-            if (transform.position != _patrolLoc[_currentIndex].position) 
-            {
-                transform.position = Vector2.MoveTowards(transform.position, _patrolLoc[_currentIndex].position, _patrolSpeed * Time.deltaTime);
-            }
-            else 
-            {
-                Debug.Log(_once); //for some reason stays true and....
-                if (_once == false)
+            _state = EnemyState.Patrolling;
+        }
+
+        switch (_state)
+        {
+            case EnemyState.Chasing:
+                _seesPlayer = true; // is this used for anything?
+                transform.position = Vector2.MoveTowards(transform.position, _target.transform.position, _chaseSpeed * Time.deltaTime);
+                break;
+            case EnemyState.Patrolling:
+                _seesPlayer = false;
+                if (transform.position != _patrolLoc[_currentIndex].position)
                 {
-                    _once = true;
-                    StartCoroutine(Wait());
-                    Debug.Log("Changing course");
+                    transform.position = Vector2.MoveTowards(transform.position, _patrolLoc[_currentIndex].position, _patrolSpeed * Time.deltaTime);
                 }
                 else
                 {
-                    Debug.Log("skipped");//...ends up skipping the remaining code
+                    Debug.Log(_once); //for some reason stays true and....
+                    if (_once == false)
+                    {
+                        _once = true;
+                        StartCoroutine(Wait());
+                        //Debug.Log("Changing course");
+                    }
+                    else
+                    {
+                        //Debug.Log("skipped");
+                    }
                 }
-            }
+                break;
         }
 
     }
 
-    IEnumerator Wait() //...doesn't even get here
+    IEnumerator Wait() 
     {
         yield return new WaitForSeconds(_waitTime);
         if (_currentIndex + 1 < _patrolLoc.Length)
         {
             _currentIndex++;
             _once = false;
-            Debug.Log(_once + "row 60");
         }
-        else if (_currentIndex >= _patrolLoc.Length)
+        else if (_currentIndex + 1 >= _patrolLoc.Length)
         {
             Debug.Log(_currentIndex);
             _currentIndex = 0;

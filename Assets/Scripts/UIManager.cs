@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    //Game over screen data
-    //> Make public list for comments for gameover screen
 
     // Start is called before the first frame update
     void Start()
