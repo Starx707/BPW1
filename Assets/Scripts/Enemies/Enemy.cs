@@ -8,21 +8,59 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _chaseSpeed;
     [SerializeField] private float _patrolSpeed;
     [SerializeField] private Player _target;
-    [SerializeField] float _minimumDist;
     private float _distance;
+
     [SerializeField] Transform[] _patrolLoc;
-    [SerializeField] float waitTime;
-    int currentIndex;
+    [SerializeField] float _waitTime;
+    int _currentIndex;
+    bool _seesPlayer = false;
+    bool _once = false;
 
     private void Update()
     {
         _distance = Vector2.Distance(transform.position, _target.transform.position); //calculates distance between itself and player
 
-        if (_distance < 5) //chases the player from a certain distance
+        if (_distance < 3.5) //chases the player from a certain distance
         {
+            _seesPlayer = true;
             transform.position = Vector2.MoveTowards(transform.position, _target.transform.position, _chaseSpeed * Time.deltaTime);
         }
+        else
+        {
+            _seesPlayer = false;
+            if (transform.position != _patrolLoc[_currentIndex].position)
+            {
+                Debug.Log("I is moving to location");
+                transform.position = Vector2.MoveTowards(transform.position, _patrolLoc[_currentIndex].position, _patrolSpeed * Time.deltaTime);
+            }
+            else if (transform.position == _patrolLoc[_currentIndex].position)
+            {
+                Debug.Log("I has been on old loc");
+                if (_once == false)
+                {
+                    _once = true;
+                    StartCoroutine(Wait());
+                }
+                StartCoroutine(Wait());
+            }
+        }
 
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(_waitTime);
+        if (_currentIndex + 1 < _patrolLoc.Length)
+        {
+            _currentIndex++;
+            Debug.Log("Ran through enumerator");
+        }
+        else if (_currentIndex == _patrolLoc.Length)
+        {
+            _currentIndex = 0;
+        }
+
+        _once = false;
     }
 
 
