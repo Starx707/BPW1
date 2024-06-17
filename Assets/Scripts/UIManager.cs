@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
     //Start game ()
     public void StartGame()
     {
-        SceneManager.LoadSceneAsync("MainLevel"); //change to Tutorial version when done
+        SceneManager.LoadSceneAsync("TutorialScene"); 
     }
 
     //------ Pause game
